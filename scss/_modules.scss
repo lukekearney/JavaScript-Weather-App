@@ -1,0 +1,34 @@
+
+.stick-top{
+	position:fixed;
+	top:0;
+	left:0;
+	z-index:9000;
+}
+
+.dialog{
+	margin:auto;
+	box-sizing:border-box;
+	padding:0.1em 1em;
+	text-align:left;
+	display:inline-block;
+	
+	&__icon{
+		text-align:center;
+	}
+
+	.typcn{
+		font-size:2em;
+	}
+
+	&--warning{
+		background-color: rgba($color-warning, 0.75);
+	}
+}
+
+@media screen and (min-width:30em){
+	.dialog{
+		width:100%;
+		text-align:center;
+	}
+}

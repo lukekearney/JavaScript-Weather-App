@@ -1,0 +1,116 @@
+<div class="info-pane container__pane">
+	<div class="info-pane__location">
+		<h1>Weather information for</h1>
+		<span class="larger-text">{{ requestedCity }}</span>
+		<form>
+			Show information such as Humidity, Pressure and Wind Speed <br>
+			<input type="checkbox" id="more-info-check">
+		</form>
+	</div>
+	<div class="info-pane__current-day">
+		<div class="info-pane__current-day__item info-pane__current-day__item--weather">
+			<h2>Today</h2>
+			<span class="typcn typcn-weather-{{getIcon daily.0.weather.0.icon }}"></span>
+		</div>
+		<div class="info-pane__current-day__item info-pane__current-day__item--temp">
+			<span class="temp--high">{{ daily.0.main.temp_max }} {{{ getTempUnit unit }}}</span>
+			<span class="temp--low">{{ daily.0.main.temp_min }} {{{ getTempUnit unit }}}</span>
+		</div>
+		<div class="info-pane__current-day__item info-pane__current-day__item--desc">
+			{{ daily.0.weather.0.description }}
+		</div>
+		<div class="info-pane__current-day__additional-info js-more-info--hidden">
+			<div class="info-pane__current-day__additional-info__sub-item">Rainfall <hr> <span class="">{{rainfall daily.0.rain.3h}} {{ getRainfallUnit unit }}</span></div>
+			<div class="info-pane__current-day__additional-info__sub-item">Wind speed <hr> <span class="">{{daily.0.wind.speed}}</span></div>
+			<div class="info-pane__current-day__additional-info__sub-item">Humidity <hr>
+			<span class="">{{daily.0.main.humidity}}</span></div>
+			<div class="info-pane__current-day__additional-info__sub-item">Pressure <hr> <span class="">{{daily.0.main.pressure}}</span> </div>
+		</div>
+	</div>
+	<div class="info-pane__forecast">
+		<ul class="weather-list">
+			{{#each daily}}
+			<li id="weather-list-item-{{@index}}" class="weather-list__item">
+				<div class="weather-list__item__date clearfix">{{ getDay this.dt}} <button id="mode-toggle-{{@index}}" class="mode-btn" data-index="{{@index}}" data-mode="day">3hr mode</button></div>
+				<div class="js-weather-info">
+					<div class="weather-list__item__info">
+						<div class="weather-list__item__info--rain weather-list__item__info__sub-item">Rainfall <br> {{ rainfall this.rain.3h }} {{ getRainfallUnit ../unit }}</div>
+						<div class="weather-list__item__info--weather weather-list__item__info__sub-item"><span class="typcn typcn-weather-{{getIcon this.weather.0.icon }}"></span>
+						{{this.weather.0.description}}</div>
+						<div class="weather-list__item__info--temp weather-list__item__info__sub-item">
+							<div class="temp--high">{{ this.main.temp_max }} {{{ getTempUnit ../unit }}}</div>
+							<div class="temp--low">{{ this.main.temp_min }} {{{ getTempUnit ../unit }}}</div>
+						</div>
+					</div>
+					<div class="weather-list__item__additional_info weather-list__item__info js-more-info--hidden">
+						<div class="weather-list__item__info__sub-item">Wind speed <br> <span class="">{{this.wind.speed}}</span></div>
+						<div class="weather-list__item__info__sub-item">Humidity <br>
+						<span class="">{{this.main.humidity}}</span></div>
+						<div class="weather-list__item__info__sub-item">Pressure <br> <span class="">{{this.main.pressure}}</span> </div>
+					</div>
+				</div>
+			</li>
+			{{/each}}
+			{{!-- <li class="weather-list__item">
+				<div class="weather-list__item__date">Tuesday</div>
+				<div class="weather-list__item__info">
+					<div class="weather-list__item__info--rain weather-list__item__info__sub-item">56mm</div>
+					<div class="weather-list__item__info--weather weather-list__item__info__sub-item"><span class="typcn typcn-weather-partly-sunny "></span>
+					Partly Sunny</div>
+					<div class="weather-list__item__info--temp weather-list__item__info__sub-item">56</div>
+				</div>
+				<div class="weather-list__item__additional_info weather-list__item__info">
+					<div class="weather-list__item__info__sub-item">Wind speed <br> <span class="">56mm</span></div>
+					<div class="weather-list__item__info__sub-item">Humidity <br>
+					<span class="">56mm</span></div>
+					<div class="weather-list__item__info__sub-item">Pressure <br> <span class="">56mm</span> </div>
+				</div>
+			</li>
+			<li class="weather-list__item">
+				<div class="weather-list__item__date">Wednesday</div>
+				<div class="weather-list__item__info">
+					<div class="weather-list__item__info--rain weather-list__item__info__sub-item">56mm</div>
+					<div class="weather-list__item__info--weather weather-list__item__info__sub-item"><span class="typcn typcn-weather-partly-sunny "></span>
+					Partly Sunny</div>
+					<div class="weather-list__item__info--temp weather-list__item__info__sub-item">56</div>
+				</div>
+				<div class="weather-list__item__additional_info weather-list__item__info">
+					<div class="weather-list__item__info__sub-item">Wind speed <br> <span class="">56mm</span></div>
+					<div class="weather-list__item__info__sub-item">Humidity <br>
+					<span class="">56mm</span></div>
+					<div class="weather-list__item__info__sub-item">Pressure <br> <span class="">56mm</span> </div>
+				</div>
+			</li>
+			<li class="weather-list__item">
+				<div class="weather-list__item__date">Saturday</div>
+				<div class="weather-list__item__info">
+					<div class="weather-list__item__info--rain weather-list__item__info__sub-item">56mm</div>
+					<div class="weather-list__item__info--weather weather-list__item__info__sub-item"><span class="typcn typcn-weather-partly-sunny "></span>
+					Partly Sunny</div>
+					<div class="weather-list__item__info--temp weather-list__item__info__sub-item">56</div>
+				</div>
+				<div class="weather-list__item__additional_info weather-list__item__info">
+					<div class="weather-list__item__info__sub-item">Wind speed <br> <span class="">56mm</span></div>
+					<div class="weather-list__item__info__sub-item">Humidity <br>
+					<span class="">56mm</span></div>
+					<div class="weather-list__item__info__sub-item">Pressure <br> <span class="">56mm</span> </div>
+				</div>
+			</li>
+			<li class="weather-list__item">
+				<div class="weather-list__item__date">Sunday</div>
+				<div class="weather-list__item__info">
+					<div class="weather-list__item__info--rain weather-list__item__info__sub-item">56mm</div>
+					<div class="weather-list__item__info--weather weather-list__item__info__sub-item"><span class="typcn typcn-weather-partly-sunny "></span>
+					Partly Sunny</div>
+					<div class="weather-list__item__info--temp weather-list__item__info__sub-item">56</div>
+				</div>
+				<div class="weather-list__item__additional_info weather-list__item__info">
+					<div class="weather-list__item__info__sub-item">Wind speed <br> <span class="">56mm</span></div>
+					<div class="weather-list__item__info__sub-item">Humidity <br>
+					<span class="">56mm</span></div>
+					<div class="weather-list__item__info__sub-item">Pressure <br> <span class="">56mm</span> </div>
+				</div>
+			</li> --}}
+		</ul>
+	</div>
+</div>

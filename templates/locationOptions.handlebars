@@ -1,0 +1,6 @@
+{{ locations.length }} Locations Found. Please choose one
+<ul class="location-list">
+	{{#each locations}}
+		<li class="location-list__item"><button data-lat="{{ this.geometry.location.lat }}" data-long="{{ this.geometry.location.lng }}" class="location-list__button button">{{ this.formatted_address }}</button></li>
+	{{/each}}
+</ul>

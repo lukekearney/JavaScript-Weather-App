@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Forecasts</title>
+	<link rel='stylesheet' href='../css/fonts/typicons/font/typicons.min.css' />
+	<link rel="stylesheet" type="text/css" href="../css/normalise.css">
+	<link rel="stylesheet" type="text/css" href="../css/main.css">
+
+	<!--<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDV1YaBgu0yUuDAZ6JWl3sAwHGuZEpwoEA&libraries=visualization&callback=initMap">
+    </script>-->
+	<script type="text/javascript" src="js/GeoModule.js"></script>
+	<script type="text/javascript" src="js/RequestModule.js"></script>
+	<script type="text/javascript" src="js/WeatherModule.js"></script>
+	<script type="text/javascript" src="js/MapsModule.js"></script>
+	<script type="text/javascript" src="js/Timer.js"></script>
+	<script type="text/javascript" src="js/helpers.js"></script>
+	<script type="text/javascript" src="js/handlebars/dist/handlebars.runtime.js"></script>
+	<script src="js/templates.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+</head>
+<body>
+	<div class="wrapper">
+		<div class="container">
+			<div id="primary-map" class="map-pane container__pane">
+				
+			</div>
+			<div class="info-pane container__pane">
+				<div class="info-pane__location">
+					<span>Weather information for</span>
+					<span class="larger-text">Dublin, Ireland</span>
+					<form>
+						<label for = "additional-info">Show additional info?</label>
+						<input type="checkbox" id="additional-info">
+					</form>
+				</div>
+				<div class="info-pane__current-day">
+					<div class="info-pane__current-day__item info-pane__current-day__item--weather">
+						<span>Today</span>
+						<span class="typcn typcn-weather-windy-cloudy"></span>
+					</div>
+					<div class="info-pane__current-day__item info-pane__current-day__item--temp">
+						54 &#8451;
+					</div>
+					<div class="info-pane__current-day__item info-pane__current-day__item--desc">
+						Windy and cloudy
+					</div>
+					<div class="info-pane__current-day__additional-info">
+						<div class="info-pane__current-day__additional-info__sub-item">Rainfall <hr> <span class="">56mm</span></div>
+						<div class="info-pane__current-day__additional-info__sub-item">Wind speed <hr> <span class="">56mm</span></div>
+						<div class="info-pane__current-day__additional-info__sub-item">Humidity <hr>
+						<span class="">56mm</span></div>
+						<div class="info-pane__current-day__additional-info__sub-item">Pressure <hr> <span class="">56mm</span> </div>
+					</div>
+				</div>
+				<div class="info-pane__forecast">
+					<ul class="weather-list">
+						<li class="weather-list__item">
+							<div class="weather-list__item__date">Monday</div>
+							<div class="weather-list__item__info">
+								<div class="weather-list__item__info--rain weather-list__item__info__sub-item">56mm</div>
+								<div class="weather-list__item__info--weather weather-list__item__info__sub-item"><span class="typcn typcn-weather-partly-sunny "></span>
+								Partly Sunny</div>
+								<div class="weather-list__item__info--temp weather-list__item__info__sub-item">56</div>
+							</div>
+							<div class="weather-list__item__additional_info weather-list__item__info">
+								<div class="weather-list__item__info__sub-item">Wind speed <br> <span class="">56mm</span></div>
+								<div class="weather-list__item__info__sub-item">Humidity <br>
+								<span class="">56mm</span></div>
+								<div class="weather-list__item__info__sub-item">Pressure <br> <span class="">56mm</span> </div>
+							</div>
+						</li>
+						<li class="weather-list__item">
+							<div class="weather-list__item__date">Tuesday</div>
+							<div class="weather-list__item__info">
+								<div class="weather-list__item__info--rain weather-list__item__info__sub-item">56mm</div>
+								<div class="weather-list__item__info--weather weather-list__item__info__sub-item"><span class="typcn typcn-weather-partly-sunny "></span>
+								Partly Sunny</div>
+								<div class="weather-list__item__info--temp weather-list__item__info__sub-item">56</div>
+							</div>
+							<div class="weather-list__item__additional_info weather-list__item__info">
+								<div class="weather-list__item__info__sub-item">Wind speed <br> <span class="">56mm</span></div>
+								<div class="weather-list__item__info__sub-item">Humidity <br>
+								<span class="">56mm</span></div>
+								<div class="weather-list__item__info__sub-item">Pressure <br> <span class="">56mm</span> </div>
+							</div>
+						</li>
+						<li class="weather-list__item">
+							<div class="weather-list__item__date">Wednesday</div>
+							<div class="weather-list__item__info">
+								<div class="weather-list__item__info--rain weather-list__item__info__sub-item">56mm</div>
+								<div class="weather-list__item__info--weather weather-list__item__info__sub-item"><span class="typcn typcn-weather-partly-sunny "></span>
+								Partly Sunny</div>
+								<div class="weather-list__item__info--temp weather-list__item__info__sub-item">56</div>
+							</div>
+							<div class="weather-list__item__additional_info weather-list__item__info">
+								<div class="weather-list__item__info__sub-item">Wind speed <br> <span class="">56mm</span></div>
+								<div class="weather-list__item__info__sub-item">Humidity <br>
+								<span class="">56mm</span></div>
+								<div class="weather-list__item__info__sub-item">Pressure <br> <span class="">56mm</span> </div>
+							</div>
+						</li>
+						<li class="weather-list__item">
+							<div class="weather-list__item__date">Saturday</div>
+							<div class="weather-list__item__info">
+								<div class="weather-list__item__info--rain weather-list__item__info__sub-item">56mm</div>
+								<div class="weather-list__item__info--weather weather-list__item__info__sub-item"><span class="typcn typcn-weather-partly-sunny "></span>
+								Partly Sunny</div>
+								<div class="weather-list__item__info--temp weather-list__item__info__sub-item">56</div>
+							</div>
+							<div class="weather-list__item__additional_info weather-list__item__info">
+								<div class="weather-list__item__info__sub-item">Wind speed <br> <span class="">56mm</span></div>
+								<div class="weather-list__item__info__sub-item">Humidity <br>
+								<span class="">56mm</span></div>
+								<div class="weather-list__item__info__sub-item">Pressure <br> <span class="">56mm</span> </div>
+							</div>
+						</li>
+						<li class="weather-list__item">
+							<div class="weather-list__item__date">Sunday</div>
+							<div class="weather-list__item__info">
+								<div class="weather-list__item__info--rain weather-list__item__info__sub-item">56mm</div>
+								<div class="weather-list__item__info--weather weather-list__item__info__sub-item"><span class="typcn typcn-weather-partly-sunny "></span>
+								Partly Sunny</div>
+								<div class="weather-list__item__info--temp weather-list__item__info__sub-item">56</div>
+							</div>
+							<div class="weather-list__item__additional_info weather-list__item__info">
+								<div class="weather-list__item__info__sub-item">Wind speed <br> <span class="">56mm</span></div>
+								<div class="weather-list__item__info__sub-item">Humidity <br>
+								<span class="">56mm</span></div>
+								<div class="weather-list__item__info__sub-item">Pressure <br> <span class="">56mm</span> </div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<!-- <table class="weather-list">
+						<tr class="weather-list__item">
+							<td class="weather-list__item__date">Monday</td>
+							<td class="weather-list__item__weather"><span class="typcn typcn-weather-partly-sunny"></span>
+							<span>Partly Sunny</span></td>
+							<td class="weather-list__item__temp"></td>
+						</tr>
+						<tr class="weather-list__item">
+							<td class="weather-list__item__date">Tuesday</td>
+							<td class="weather-list__item__weather"><span class="typcn typcn-weather-partly-sunny"></span>
+							<span>Partly Sunny</span></td>
+							<td class="weather-list__item__temp"></td>
+						</tr>
+						<tr class="weather-list__item">
+							<td class="weather-list__item__date">Wednesday</td>
+							<td class="weather-list__item__weather"><span class="typcn typcn-weather-partly-sunny"></span>
+							<span>Partly Sunny</span></td>
+							<td class="weather-list__item__temp"></td>
+						</tr>
+						<tr class="weather-list__item">
+							<td class="weather-list__item__date">Thursday</td>
+							<td class="weather-list__item__weather"><span class="typcn typcn-weather-partly-sunny"></span>
+							<span>Partly Sunny</span></td>
+							<td class="weather-list__item__temp"></td>
+						</tr>
+						<tr class="weather-list__item">
+							<td class="weather-list__item__date">Friday</td>
+							<td class="weather-list__item__weather"><span class="typcn typcn-weather-partly-sunny"></span>
+							<span>Partly Sunny</span></td>
+							<td class="weather-list__item__temp"></td>
+						</tr>
+					</table> -->
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Forecasts</title>
+	<link rel='stylesheet' href='../css/fonts/typicons/font/typicons.min.css' />
+	<link rel="stylesheet" type="text/css" href="../css/normalise.css">
+	<link rel="stylesheet" type="text/css" href="../css/main.css">
+
+	<!--<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDV1YaBgu0yUuDAZ6JWl3sAwHGuZEpwoEA&libraries=visualization&callback=initMap">
+    </script>-->
+	<script type="text/javascript" src="js/GeoModule.js"></script>
+	<script type="text/javascript" src="js/RequestModule.js"></script>
+	<script type="text/javascript" src="js/WeatherModule.js"></script>
+	<script type="text/javascript" src="js/MapsModule.js"></script>
+	<script type="text/javascript" src="js/Timer.js"></script>
+	<script type="text/javascript" src="js/helpers.js"></script>
+	<script type="text/javascript" src="js/handlebars/dist/handlebars.runtime.js"></script>
+	<script src="js/templates.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<div class="wrapper">
+		<div id="form" class="overlay form-pane">
+			<form action="#" method="GET" id="weather-form" class="info-pane__form centred">
+				<div class="form-group ">
+					<h2>Location</h2>
+					<p>Enter the location you want, or click the button to use your current location</p>
+					<div class="inner-container">
+						<div class="button-pane">
+							<button id="btn-current-location" class="get-current-location"><span class="typcn typcn-location"></span></button>
+						</div>
+						<div class="text-pane">
+							<label>
+								<input type="text" id="address-input" name="address" placeholder="Type location">
+							</label>
+						</div>
+						
+					</div>
+				</div>
+				<div id="location-options">
+				</div>
+				<div class="group">
+					<div class="form-group">
+						<h2>Units</h2>
+						<div class="form-group__radio">
+							<input type="radio" class="screen-hidden" id="imperial" name="units" value="imperial"/>
+							<label for="imperial" class="form-group__radio__item">Imperial<br></label>
+						
+							<input type="radio" class="screen-hidden" id="metric" name="units" value="metric"/><label for="metric" class="form-group__radio__item">Metric<br></label>
+						</div>
+						
+					</div>
+					
+					<div class="form-group">
+						<h2>Num days</h2>
+						<label>
+							<input id="days" type="range" min="1" max="5" value="1"/>
+							<span id="days-display" class="range-counter">1</span>
+						</label>
+					</div>
+				</div>
+				<input type="submit" value="submit" class="button submit-btn"/>
+				
+			</form>
+		</div>
+		<div class="container">
+			<div class="info-pane container__pane">
+
+			</div>
+			<!-- <div id="primary-map" class="map-pane container__pane">
+				
+			</div> -->
+		</div>
+	</div>
+</body>
+</html>

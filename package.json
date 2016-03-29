@@ -1,0 +1,22 @@
+{
+  "name": "comp30680-weather-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-css": "node-sass --include-path scss scss/main.scss css/main.css --output-style expanded",
+    "watch-css": "nodemon -e scss -x \"npm run build-css\"",
+    "build-hb": "handlebars templates/> js/templates.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "handlebars": "^4.0.5",
+    "node-sass": "^3.4.2",
+    "nodemon": "^1.8.1"
+  },
+  "dependencies": {
+    "handlebars": "^4.0.5"
+  }
+}

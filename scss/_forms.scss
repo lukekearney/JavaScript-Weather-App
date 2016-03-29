@@ -1,0 +1,194 @@
+.info-pane__form{
+}
+
+.group{
+	text-align:center;
+	
+}
+
+.form-group{
+	padding:1em;
+	max-width:500px;
+	margin:auto;
+	&__radio{
+		display:block;
+		width:100%;
+		&__item{
+      box-sizing:border-box;
+			width:47%;
+      max-width:10em;
+			display:inline-block;
+      border:1px solid #fff;
+      padding:1em;
+      border-radius:5px;
+      margin:1%;
+		}
+	}
+
+	box-sizing:border-box;
+}
+
+.range-counter{
+	font-size:1.2em;
+	color:$primary;
+}
+
+.button{
+	display:block;
+	appearance:none;
+	background:transparent;
+	border: 1px solid $primary;
+	box-shadow: 0px 0px 5px rgba(0,0,0,0.56);
+	color:$primary;
+	border-radius:3px;
+	font-size:1.2em;
+	margin:auto;
+}
+
+.get-current-location{
+	display:inline-block;
+	appearance:none;
+	background:transparent;
+	border: 1px solid $color-text;
+	color:$color-text;
+	border-radius:3px;
+	font-size:1.2em;
+	margin:auto;
+  float:right;
+  &:focus{
+    border: 1px solid $primary;
+    color:$primary;
+  }
+
+   &:active{
+    border: 1px solid $primary;
+    color:$primary;
+  }
+}
+
+
+
+.submit-btn{
+  width:10em;
+  padding:0.5em 1em;
+}
+
+.mode-btn{
+  background:transparent;
+  float:right;
+  color:$primary;
+  border:1px solid $accent;
+}
+
+/* styling text input */
+input[type=text]{
+	border:none;
+	padding:0.4em;
+  background-color:transparent;
+	border-bottom:1px solid #ccc;
+	width:80%;
+	&:focus{
+		outline:none;
+    border-bottom:1px solid $primary;
+	}
+}
+
+
+input[type=radio]:checked + label {
+  //background-color:$primary;
+  font-style: bold;
+  color:$primary;
+  border: 1px solid $primary;
+} 
+
+/* Styling the range input type */
+/* https://css-tricks.com/styling-cross-browser-compatible-range-inputs-css/ */
+
+/* reset */
+input[type=range] {
+  -webkit-appearance: none;
+  margin: 10px 0;
+  width: 100%;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 0px 0px 2px $accent, 0px 0px 2px $accent;
+  background: lighten($accent, 10);
+  border: 1px solid $primary;
+}
+input[type=range]::-webkit-slider-thumb {
+  box-shadow: 0px 0px 1px rgba(0,0,0,0.56);
+  border: 1px solid $primary;
+  height: 20px;
+  width: 39px;
+  background: #fff;
+  border-radius:3px;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -7.6px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: lighten($accent, 10);
+}
+
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 8px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: $accent;
+ 
+}
+input[type=range]::-moz-range-thumb {
+  box-shadow: 0px 0px 1px rgba(0,0,0,0.56);
+  border: 1px solid $primary;
+  height: 20px;
+  width: 39px;
+  border-radius:3px;
+  background: #fff;
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 8px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: transparent;
+  border-color: transparent;
+  border-width: 39px 0;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #ac51b5;
+  border: 0px solid #000101;
+  border-radius: 50px;
+  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+}
+input[type=range]::-ms-fill-upper {
+  background: $accent;
+  border: 0px solid #000101;
+  border-radius: 50px;
+  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+}
+input[type=range]::-ms-thumb {
+  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+  border: 0px solid #000000;
+  height: 20px;
+  width: 39px;
+  border-radius: 7px;
+  background: #65001c;
+  cursor: pointer;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: #ac51b5;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #ac51b5;
+}
+

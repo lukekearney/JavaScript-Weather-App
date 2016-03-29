@@ -1,0 +1,15 @@
+<div class="weather-list__item__info">
+	<div class="weather-list__item__info--rain weather-list__item__info__sub-item">Rainfall <br> {{ rainfall weather.rain.3h }} {{ getRainfallUnit unit }}</div>
+	<div class="weather-list__item__info--weather weather-list__item__info__sub-item"><span class="typcn typcn-weather-{{getIcon weather.weather.0.icon }}"></span>
+	{{weather.weather.0.description}}</div>
+	<div class="weather-list__item__info--temp weather-list__item__info__sub-item">
+		<div class="temp--high">{{ weather.main.temp_max }} {{{ getTempUnit unit }}}</div>
+		<div class="temp--low">{{ weather.main.temp_min }} {{{ getTempUnit unit }}}</div>
+	</div>
+</div>
+<div class="weather-list__item__additional_info weather-list__item__info js-more-info--hidden">
+	<div class="weather-list__item__info__sub-item">Wind speed <br> <span class="">{{weather.wind.speed}}</span></div>
+	<div class="weather-list__item__info__sub-item">Humidity <br>
+	<span class="">{{weather.main.humidity}}</span></div>
+	<div class="weather-list__item__info__sub-item">Pressure <br> <span class="">{{weather.main.pressure}}</span> </div>
+</div>
