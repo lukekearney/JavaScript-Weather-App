@@ -10,10 +10,18 @@ var GeoModule = (function() {
 		"address": {
 
 		},
-		"coords": {
-
-		}
+		"coords": []
 	}
+
+	function loadFromCache(){
+		geoCodeResults = CacheModule.load("geoCodeResults");
+		// fetch last address from cache
+		lastAddress = CacheModule.load("lastAddress");
+		// fetch last location from cache
+		lastLocation = CacheModule.load("lastLocation") || {};
+	}
+	loadFromCache();
+	console.log("Geomodule laoded");
 
 	return {
 		getCurrentLocation: function(callback){
@@ -44,11 +52,15 @@ var GeoModule = (function() {
 		getAddress: function(lat, long, callback){
 
 			if (geoCodeResults.coords){
-				if (rounded(geoCodeResults.coords.lat) == rounded(lat) && rounded(geoCodeResults.coords.lng) == rounded(long)){
-					results = geoCodeResults.coords.data;
-					callback(results);
-					return true;
+				for (var i = 0; i < geoCodeResults.coords.length; i++){
+					var item = geoCodeResults.coords[i];
+					if (rounded(item.lat) == rounded(lat) && rounded(item.lng) == rounded(long)){
+						results = geoCodeResults.coords.data;
+						callback(results);
+						return true;
+					}
 				}
+				
 			} 
 
 			var result = GeoCoder.geocode({
@@ -58,17 +70,23 @@ var GeoModule = (function() {
 				}
 			}, function(results, status){
 				if (status === google.maps.GeocoderStatus.OK) {
-					// resultsMap.setCenter(results[0].geometry.location);
-					// var marker = new google.maps.Marker({
-					//   map: resultsMap,
-					//   position: results[0].geometry.location
-					// });
-					// saves the data
-					geoCodeResults.coords["lat"] = lat;
-					geoCodeResults.coords["lng"] = long;
-					geoCodeResults.coords["data"] = results;
+					
+					// saves the last geocode request
+					var geocodeResult = {
+
+					}
+
+					geocodeResult["lat"] = lat;
+					geocodeResult["lng"] = long;
+					geocodeResult["data"] = results;
+
+					geoCodeResults.coords.push(geocodeResult);
+					
+					// save the geoCodeResults
+					CacheModule.save("geoCodeResults", geoCodeResults, 31556926);
+
 					callback(results);
-					//console.log(self.lastAddress);
+					
 			    } else {
 			    	alert('Geocode was not successful for the following reason: ' + status);
 			    }
@@ -116,6 +134,8 @@ var GeoModule = (function() {
 					geoCodeResults.address["label"] = address;
 					geoCodeResults.address["data"] = filteredResults;
 
+					// save to longer term storage. Stores for up to a year
+					CacheModule.save("geoCodeResults", geoCodeResults, 31556926);
 					callback(filteredResults);
 			    } else {
 			    	alert('Geocode was not successful for the following reason: ' + status);
@@ -128,6 +148,8 @@ var GeoModule = (function() {
 
 			lastLocation.lat = lat;
 			lastLocation.lng = long;
+			// save to cache
+			CacheModule.save("lastLocation", lastLocation, 31556926);
 		},
 
 		getLastLocation: function() {
@@ -137,6 +159,7 @@ var GeoModule = (function() {
 
 		saveLastAddress: function(address){
 			lastAddress = address;
+			CacheModule.save("lastAddress", lastAddress, 31556926);
 		},
 
 		getLastAddress: function(address){

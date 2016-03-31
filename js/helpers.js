@@ -20,9 +20,27 @@ function replaceClass(element, old, newVal){
 	element.setAttribute("class", elClass);
 }
 
-function rainfall (unit = null){
-	return unit || 0;
+function isObject(variable){
+	if (typeof variable == "object"){
+		return true;
+	} else {
+		return false;
+	}
 }
+
+// http://stackoverflow.com/questions/3710204/how-to-check-if-a-string-is-a-valid-json-string-in-javascript-without-using-try/3710226
+function isJSON(str) {
+	try {
+		JSON.parse(str);
+	} catch (e) {
+		return false;
+	}
+	return true;
+}
+
+Handlebars.registerHelper('rainfall', function(unit = null){
+	return unit || 0;
+});
 
 // add custom Handlebars helper
 // http://stackoverflow.com/questions/15088215/handlebars-js-if-block-helper

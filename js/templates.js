@@ -6,7 +6,7 @@ templates['3hrForecast'] = template({"1":function(container,depth0,helpers,parti
   return "	<li class=\"weather-list__item weather-list__item--no-underline\">\n		<div class=\"weather-list__item__date\">"
     + alias3((helpers.getTime || (depth0 && depth0.getTime) || alias2).call(alias1,(depth0 != null ? depth0.dt : depth0),{"name":"getTime","hash":{},"data":data}))
     + "</div>\n		<div class=\"weather-list__item__info\">\n			<div class=\"weather-list__item__info--rain weather-list__item__info__sub-item\">Rainfall <br> "
-    + alias3(alias4(((stack1 = (depth0 != null ? depth0.rain : depth0)) != null ? stack1["3h"] : stack1), depth0))
+    + alias3((helpers.rainfall || (depth0 && depth0.rainfall) || alias2).call(alias1,((stack1 = (depth0 != null ? depth0.rain : depth0)) != null ? stack1["3h"] : stack1),{"name":"rainfall","hash":{},"data":data}))
     + " "
     + alias3((helpers.getRainfallUnit || (depth0 && depth0.getRainfallUnit) || alias2).call(alias1,(depths[1] != null ? depths[1].unit : depths[1]),{"name":"getRainfallUnit","hash":{},"data":data}))
     + "</div>\n			<div class=\"weather-list__item__info--weather weather-list__item__info__sub-item\"><span class=\"typcn typcn-weather-"
@@ -36,30 +36,30 @@ templates['3hrForecast'] = template({"1":function(container,depth0,helpers,parti
     + "</ul>";
 },"useData":true,"useDepths":true});
 templates['dayForecast'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    var stack1, alias1=container.lambda, alias2=container.escapeExpression, alias3=depth0 != null ? depth0 : {}, alias4=helpers.helperMissing;
+    var stack1, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3=container.escapeExpression, alias4=container.lambda;
 
   return "<div class=\"weather-list__item__info\">\n	<div class=\"weather-list__item__info--rain weather-list__item__info__sub-item\">Rainfall <br> "
-    + alias2(alias1(((stack1 = ((stack1 = (depth0 != null ? depth0.weather : depth0)) != null ? stack1.rain : stack1)) != null ? stack1["3h"] : stack1), depth0))
+    + alias3((helpers.rainfall || (depth0 && depth0.rainfall) || alias2).call(alias1,((stack1 = ((stack1 = (depth0 != null ? depth0.weather : depth0)) != null ? stack1.rain : stack1)) != null ? stack1["3h"] : stack1),{"name":"rainfall","hash":{},"data":data}))
     + " "
-    + alias2((helpers.getRainfallUnit || (depth0 && depth0.getRainfallUnit) || alias4).call(alias3,(depth0 != null ? depth0.unit : depth0),{"name":"getRainfallUnit","hash":{},"data":data}))
+    + alias3((helpers.getRainfallUnit || (depth0 && depth0.getRainfallUnit) || alias2).call(alias1,(depth0 != null ? depth0.unit : depth0),{"name":"getRainfallUnit","hash":{},"data":data}))
     + "</div>\n	<div class=\"weather-list__item__info--weather weather-list__item__info__sub-item\"><span class=\"typcn typcn-weather-"
-    + alias2((helpers.getIcon || (depth0 && depth0.getIcon) || alias4).call(alias3,((stack1 = ((stack1 = ((stack1 = (depth0 != null ? depth0.weather : depth0)) != null ? stack1.weather : stack1)) != null ? stack1["0"] : stack1)) != null ? stack1.icon : stack1),{"name":"getIcon","hash":{},"data":data}))
+    + alias3((helpers.getIcon || (depth0 && depth0.getIcon) || alias2).call(alias1,((stack1 = ((stack1 = ((stack1 = (depth0 != null ? depth0.weather : depth0)) != null ? stack1.weather : stack1)) != null ? stack1["0"] : stack1)) != null ? stack1.icon : stack1),{"name":"getIcon","hash":{},"data":data}))
     + "\"></span>\n	"
-    + alias2(alias1(((stack1 = ((stack1 = ((stack1 = (depth0 != null ? depth0.weather : depth0)) != null ? stack1.weather : stack1)) != null ? stack1["0"] : stack1)) != null ? stack1.description : stack1), depth0))
+    + alias3(alias4(((stack1 = ((stack1 = ((stack1 = (depth0 != null ? depth0.weather : depth0)) != null ? stack1.weather : stack1)) != null ? stack1["0"] : stack1)) != null ? stack1.description : stack1), depth0))
     + "</div>\n	<div class=\"weather-list__item__info--temp weather-list__item__info__sub-item\">\n		<div class=\"temp--high\">"
-    + alias2(alias1(((stack1 = ((stack1 = (depth0 != null ? depth0.weather : depth0)) != null ? stack1.main : stack1)) != null ? stack1.temp_max : stack1), depth0))
+    + alias3(alias4(((stack1 = ((stack1 = (depth0 != null ? depth0.weather : depth0)) != null ? stack1.main : stack1)) != null ? stack1.temp_max : stack1), depth0))
     + " "
-    + ((stack1 = (helpers.getTempUnit || (depth0 && depth0.getTempUnit) || alias4).call(alias3,(depth0 != null ? depth0.unit : depth0),{"name":"getTempUnit","hash":{},"data":data})) != null ? stack1 : "")
+    + ((stack1 = (helpers.getTempUnit || (depth0 && depth0.getTempUnit) || alias2).call(alias1,(depth0 != null ? depth0.unit : depth0),{"name":"getTempUnit","hash":{},"data":data})) != null ? stack1 : "")
     + "</div>\n		<div class=\"temp--low\">"
-    + alias2(alias1(((stack1 = ((stack1 = (depth0 != null ? depth0.weather : depth0)) != null ? stack1.main : stack1)) != null ? stack1.temp_min : stack1), depth0))
+    + alias3(alias4(((stack1 = ((stack1 = (depth0 != null ? depth0.weather : depth0)) != null ? stack1.main : stack1)) != null ? stack1.temp_min : stack1), depth0))
     + " "
-    + ((stack1 = (helpers.getTempUnit || (depth0 && depth0.getTempUnit) || alias4).call(alias3,(depth0 != null ? depth0.unit : depth0),{"name":"getTempUnit","hash":{},"data":data})) != null ? stack1 : "")
+    + ((stack1 = (helpers.getTempUnit || (depth0 && depth0.getTempUnit) || alias2).call(alias1,(depth0 != null ? depth0.unit : depth0),{"name":"getTempUnit","hash":{},"data":data})) != null ? stack1 : "")
     + "</div>\n	</div>\n</div>\n<div class=\"weather-list__item__additional_info weather-list__item__info js-more-info--hidden\">\n	<div class=\"weather-list__item__info__sub-item\">Wind speed <br> <span class=\"\">"
-    + alias2(alias1(((stack1 = ((stack1 = (depth0 != null ? depth0.weather : depth0)) != null ? stack1.wind : stack1)) != null ? stack1.speed : stack1), depth0))
+    + alias3(alias4(((stack1 = ((stack1 = (depth0 != null ? depth0.weather : depth0)) != null ? stack1.wind : stack1)) != null ? stack1.speed : stack1), depth0))
     + "</span></div>\n	<div class=\"weather-list__item__info__sub-item\">Humidity <br>\n	<span class=\"\">"
-    + alias2(alias1(((stack1 = ((stack1 = (depth0 != null ? depth0.weather : depth0)) != null ? stack1.main : stack1)) != null ? stack1.humidity : stack1), depth0))
+    + alias3(alias4(((stack1 = ((stack1 = (depth0 != null ? depth0.weather : depth0)) != null ? stack1.main : stack1)) != null ? stack1.humidity : stack1), depth0))
     + "</span></div>\n	<div class=\"weather-list__item__info__sub-item\">Pressure <br> <span class=\"\">"
-    + alias2(alias1(((stack1 = ((stack1 = (depth0 != null ? depth0.weather : depth0)) != null ? stack1.main : stack1)) != null ? stack1.pressure : stack1), depth0))
+    + alias3(alias4(((stack1 = ((stack1 = (depth0 != null ? depth0.weather : depth0)) != null ? stack1.main : stack1)) != null ? stack1.pressure : stack1), depth0))
     + "</span> </div>\n</div>";
 },"useData":true});
 templates['errorDialog'] = template({"1":function(container,depth0,helpers,partials,data) {
@@ -119,7 +119,7 @@ templates['weatherInfo'] = template({"1":function(container,depth0,helpers,parti
     + "\" class=\"mode-btn\" data-index=\""
     + alias4(((helper = (helper = helpers.index || (data && data.index)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"index","hash":{},"data":data}) : helper)))
     + "\" data-mode=\"day\">3hr mode</button></div>\n				<div class=\"js-weather-info\">\n					<div class=\"weather-list__item__info\">\n						<div class=\"weather-list__item__info--rain weather-list__item__info__sub-item\">Rainfall <br> "
-    + alias4(alias5(((stack1 = (depth0 != null ? depth0.rain : depth0)) != null ? stack1["3h"] : stack1), depth0))
+    + alias4((helpers.rainfall || (depth0 && depth0.rainfall) || alias2).call(alias1,((stack1 = (depth0 != null ? depth0.rain : depth0)) != null ? stack1["3h"] : stack1),{"name":"rainfall","hash":{},"data":data}))
     + " "
     + alias4((helpers.getRainfallUnit || (depth0 && depth0.getRainfallUnit) || alias2).call(alias1,(depths[1] != null ? depths[1].unit : depths[1]),{"name":"getRainfallUnit","hash":{},"data":data}))
     + "</div>\n						<div class=\"weather-list__item__info--weather weather-list__item__info__sub-item\"><span class=\"typcn typcn-weather-"
@@ -159,7 +159,7 @@ templates['weatherInfo'] = template({"1":function(container,depth0,helpers,parti
     + "</span>\n		</div>\n		<div class=\"info-pane__current-day__item info-pane__current-day__item--desc\">\n			"
     + alias3(alias4(((stack1 = ((stack1 = ((stack1 = ((stack1 = (depth0 != null ? depth0.daily : depth0)) != null ? stack1["0"] : stack1)) != null ? stack1.weather : stack1)) != null ? stack1["0"] : stack1)) != null ? stack1.description : stack1), depth0))
     + "\n		</div>\n		<div class=\"info-pane__current-day__additional-info js-more-info--hidden\">\n			<div class=\"info-pane__current-day__additional-info__sub-item\">Rainfall <hr> <span class=\"\">"
-    + alias3(alias4(((stack1 = ((stack1 = ((stack1 = (depth0 != null ? depth0.daily : depth0)) != null ? stack1["0"] : stack1)) != null ? stack1.rain : stack1)) != null ? stack1["3h"] : stack1), depth0))
+    + alias3((helpers.rainfall || (depth0 && depth0.rainfall) || alias2).call(alias1,((stack1 = ((stack1 = ((stack1 = (depth0 != null ? depth0.daily : depth0)) != null ? stack1["0"] : stack1)) != null ? stack1.rain : stack1)) != null ? stack1["3h"] : stack1),{"name":"rainfall","hash":{},"data":data}))
     + " "
     + alias3((helpers.getRainfallUnit || (depth0 && depth0.getRainfallUnit) || alias2).call(alias1,(depth0 != null ? depth0.unit : depth0),{"name":"getRainfallUnit","hash":{},"data":data}))
     + "</span></div>\n			<div class=\"info-pane__current-day__additional-info__sub-item\">Wind speed <hr> <span class=\"\">"

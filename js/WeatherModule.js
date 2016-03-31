@@ -4,6 +4,28 @@ var WeatherModule = (function(){
 
 	}
 
+	function removeExpired(){
+		var currentTime = Math.floor(Date.now() / 1000);
+		for (item in storedWeather){
+			// if item was saved more than an hour ago
+			console.log(item);
+			if (item.saved + 3600 <= currentTime) {
+				// remove the item
+				
+			}
+		}
+	}
+
+	// fetch data from Cache
+	function loadFromCache(){
+		storedWeather = CacheModule.load("storedWeather");
+
+		// run clean up function on short term
+		removeExpired();
+	}
+
+	loadFromCache();
+
 	return {
 		requestForecast: function(data, callback){
 			// prepare data for sending
@@ -79,7 +101,12 @@ var WeatherModule = (function(){
 				saved: Math.floor(Date.now() / 1000)
 			}
 
+			
 			storedWeather[address] = weatherObj;
+
+			// save to localstorage with an expiry of 1 hour
+			console.log("saving forecast")
+			CacheModule.save("storedWeather", storedWeather, 3600);
 		},
 
 		getDailyWeather: function(weather){
