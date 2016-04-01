@@ -21,7 +21,7 @@ var GeoModule = (function() {
 		lastLocation = CacheModule.load("lastLocation") || {};
 	}
 	loadFromCache();
-	console.log("Geomodule laoded");
+	
 
 	return {
 		getCurrentLocation: function(err, callback){
@@ -92,7 +92,7 @@ var GeoModule = (function() {
 			    }
 			});
 
-			//console.log(self.lastAddress);
+			
 		},
 
 		getCoords: function(address, callback) {
@@ -120,13 +120,13 @@ var GeoModule = (function() {
 					var filteredResults = results.filter(function(elem){
 						// if its found in the array
 						if (foundResults[elem.formatted_address]){
-							console.log("found " + elem.formatted_address);
+							
 							return false;
 						}
 
 						// note that the value has been found
 						foundResults[elem.formatted_address] = true;
-						console.log(foundResults);
+						
 
 						return true;
 					})

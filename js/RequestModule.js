@@ -15,7 +15,7 @@ var RequestModule = (function(){
 
 	AjaxRequest.prototype = {
 		done: function(){
-			console.log("Request finished");
+			
 			if (this.status > 399 && this.status < 600){
 				// error
 				console.error(this.status + ": " + this.response);
@@ -64,33 +64,9 @@ var RequestModule = (function(){
 
 
 	function ajax(request, callbacks){
-		console.log("entered ajax function");
-		/*****
-
-		Sample input
-		ajax({
-			type: "Get"
-			url: google.com,
-			params: {
-				foo: "bar"
-			}
-		}, {
-			error: function(){
-					
-			},
-			success: function(){
-				
-			},
-			default: function(){
-				
-			}		
-		})
-
-		*****/
-		
 
 		if (request.type){
-			console.log("Starting request");
+			
 			// check if its a valid type, use the full upper case version
 			switch(request.type.toUpperCase()){
 				// only accept get and post requests
@@ -106,7 +82,7 @@ var RequestModule = (function(){
 			// check the request URL is in place
 			
 		}
-		console.log("exiting");
+		
 	}
 
 	return {
@@ -114,8 +90,6 @@ var RequestModule = (function(){
 			var resp;
 
 			if (url){
-				console.log("url is set");
-				// TODO: use URL builder function to build the url with the parameters for a get request
 				// check if the window.XMLHTTPrequest is present
 				// https://developer.mozilla.org/en-US/docs/AJAX/Getting_Started
 				if (window.XMLHttpRequest){
@@ -142,27 +116,7 @@ var RequestModule = (function(){
 				console.error("No url specified");
 			}
 
-			// var reqCallback = {
-
-			// }
-
-			// if (callbacks){
-			// 	if (callbacks.success || callbacks.default){
-			// 		if (callbacks.success){
-			// 			reqCallback.success = callbacks.success;
-			// 		}
-
-			// 		if (callbacks.error){
-			// 			reqCallback.error = callbacks.error;
-			// 		}
-
-			// 		if (callbacks.default){
-			// 			reqCallback.default = callbacks.default;
-			// 		}
-			// 	} else {
-			// 		reqCallback.default = callbacks;
-			// 	}
-			// }
+			
 			return resp;
 		}
 	}

@@ -6,13 +6,19 @@ var WeatherModule = (function(){
 
 	function removeExpired(){
 		var currentTime = Math.floor(Date.now() / 1000);
+		// http://stackoverflow.com/questions/684672/loop-through-javascript-object
 		for (item in storedWeather){
 			// if item was saved more than an hour ago
-			console.log(item);
-			if (item.saved + 3600 <= currentTime) {
-				// remove the item
-				
+			if (storedWeather.hasOwnProperty(item)){
+				var weather = storedWeather[item];
+				if (weather.saved + 3600 <= currentTime) {
+					// remove the item
+					// http://stackoverflow.com/questions/3455405/how-to-remove-a-key-from-a-javascript-object
+					delete storedWeather[item];
+				}
 			}
+			
+			
 		}
 	}
 
@@ -105,7 +111,7 @@ var WeatherModule = (function(){
 			storedWeather[address] = weatherObj;
 
 			// save to localstorage with an expiry of 1 hour
-			console.log("saving forecast")
+			
 			CacheModule.save("storedWeather", storedWeather, 3600);
 		},
 

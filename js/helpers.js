@@ -5,9 +5,9 @@ function rounded(num){
 function removeClass(element, cls){
 	console.log("removing class");
 	var elClass = element.getAttribute("class");
-	console.log(elClass);
+	
 	elClass = elClass.replace(cls, "");
-	console.log(elClass);
+	
 	element.setAttribute("class", elClass);
 }
 

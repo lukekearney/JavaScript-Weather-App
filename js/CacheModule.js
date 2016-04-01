@@ -37,7 +37,7 @@ var CacheModule = (function() {
                             // return true if removed
                             return true;
                         } else {
-                            //console.log(key + " has not expired");
+                            
                             // return false if not expired
                             return false;
                         }
@@ -55,7 +55,7 @@ var CacheModule = (function() {
                     
                     if (localStorage.key(i).match(re)){
                         var key = localStorage.key(i).substring(prefix.length);
-                        console.log("key is: " + key);
+                        
                         // recursively call to remove this key. Check if its removed
                         if(clearExpired(key)){
                             // decrement i to account for removed element
