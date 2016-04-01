@@ -24,15 +24,15 @@ var GeoModule = (function() {
 	console.log("Geomodule laoded");
 
 	return {
-		getCurrentLocation: function(callback){
+		getCurrentLocation: function(err, callback){
 			var callback = callback || null;
 			// https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/Using_geolocation
 			if (navigator.geolocation){
 				var result = navigator.geolocation.getCurrentPosition(callback);
 			} else {
 				// check if theres a callback
-        		if (callback.error){
-        			callback.error();
+        		if (err){
+        			err(error);
         		} 
 
         		console.error("Geolocation is not supported");

@@ -102,7 +102,11 @@
 			if (locationOptionsElement.innerHTML != loaderHTML){
 				locationOptionsElement.innerHTML = loaderHTML;
 			}
-			GeoModule.getCurrentLocation(function(pos){
+			GeoModule.getCurrentLocation(function(err){
+				// error handling
+				console.log(err);
+				locationOptionsElement.innerHTML = "";
+			}, function(pos){
 				
 				locationOptionsElement.innerHTML = "";
 				// this is where a cache check would come in, check if the co-ordinates are the same
