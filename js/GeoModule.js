@@ -14,7 +14,7 @@ var GeoModule = (function() {
 	}
 
 	function loadFromCache(){
-		geoCodeResults = CacheModule.load("geoCodeResults");
+		geoCodeResults = CacheModule.load("geoCodeResults") || geoCodeResults;
 		// fetch last address from cache
 		lastAddress = CacheModule.load("lastAddress");
 		// fetch last location from cache

@@ -18,7 +18,7 @@ var WeatherModule = (function(){
 
 	// fetch data from Cache
 	function loadFromCache(){
-		storedWeather = CacheModule.load("storedWeather");
+		storedWeather = CacheModule.load("storedWeather") || {};
 
 		// run clean up function on short term
 		removeExpired();

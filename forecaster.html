@@ -16,7 +16,7 @@
 	<script type="text/javascript" src="js/RequestModule.js"></script>
 	<script type="text/javascript" src="js/WeatherModule.js"></script>
 	<script type="text/javascript" src="js/MapsModule.js"></script>
-	<script defer async
+	<script defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDV1YaBgu0yUuDAZ6JWl3sAwHGuZEpwoEA&libraries=visualization&callback=initMap">
     </script>
 	
@@ -309,7 +309,8 @@
 					var unitValue;
 					
 					// position the map
-					MapsModule.gotoLocation(result[0].geometry.location.lat(), result[0].geometry.location.lng());
+					console.log(result);
+					MapsModule.gotoLocation(result[0].geometry.location.lat, result[0].geometry.location.lng);
 
 					for (var i = 0; i < units.length; i++){
 						// check if that radio button has been selected
